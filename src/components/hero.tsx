@@ -1,11 +1,11 @@
 "use client"
 
-import { useEffect, useRef } from "react"
-import { motion } from "framer-motion"
 import { Button } from "@/components/ui/button"
-import { ArrowDown, Github, Linkedin, Twitter } from "lucide-react"
-import Link from "next/link"
 import { NAME, SOCIAL_LINKS } from "@/lib/constants"
+import { motion } from "framer-motion"
+import { ArrowDown, Github, Linkedin } from "lucide-react"
+import Link from "next/link"
+import { useEffect, useRef } from "react"
 
 export default function Hero() {
   const canvasRef = useRef<HTMLCanvasElement>(null)

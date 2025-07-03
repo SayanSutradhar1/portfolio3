@@ -1,15 +1,15 @@
 "use client"
 
+import { motion } from "framer-motion"
 import type React from "react"
 import { useState } from "react"
-import { motion } from "framer-motion"
 import { useInView } from "react-intersection-observer"
 // import { useToast } from "@/hooks/use-toast"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
+import { SOCIAL_LINKS } from "@/lib/constants"
 import { AtSign, MapPin, Phone, Send } from "lucide-react"
-import { NAME, SOCIAL_LINKS } from "@/lib/constants"
 
 export default function Contact() {
   // const { toast } = useToast()

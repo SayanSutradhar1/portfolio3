@@ -1,9 +1,9 @@
 "use client"
 
-import Link from "next/link"
-import { Github, Linkedin, Twitter, Heart, ArrowUp } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { NAME, SOCIAL_LINKS } from "@/lib/constants"
+import { ArrowUp, Github, Heart, Linkedin } from "lucide-react"
+import Link from "next/link"
 
 export default function Footer() {
   const scrollToTop = () => {

@@ -34,13 +34,13 @@ export default function Projects() {
     },
     {
       title: "TECH O NICKS Web",
-      description: " A web platform for the official technical club (TECH O NICKS) of Coochbehar Government Engineering College. This application having a dynamic and stylish UI for the user, includes features like event details , RSVP etc. It has a authentication system where Students can create a id for this club",
+      description: "A web platform for the official technical club (TECH O NICKS) of Coochbehar Government Engineering College. This application having a dynamic and stylish UI for the user, includes features like event details , RSVP etc. It has a authentication system where Students can create a id for this club",
       image: ton,
       tags: ["Next js", "TypeScript", "Accertinity UI", "MongoDB"],
       github: "https://github.com",
       demo: "https://example.com",
       details:
-        "This project leverages the power of AI to generate unique images from text descriptions. Built with Next.js and TypeScript, it provides a seamless user experience with real-time image generation. The application includes features like image history, sharing capabilities, and customization options for the generated images. It's optimized for both desktop and mobile devices.",
+        "A web platform for the official technical club (TECH O NICKS) of Coochbehar Government Engineering College. This application having a dynamic and stylish UI for the user, includes features like event details , RSVP etc. It has a authentication system where Students can create a id for this club",
     },
   ]
 
@@ -117,7 +117,7 @@ export default function Projects() {
                   </Button>
                 </div>
                 <CardHeader className="pb-2">
-                  <CardTitle>{project.title}</CardTitle>
+                  <CardTitle className="text-white font-bold">{project.title}</CardTitle>
                   <CardDescription className="text-gray-400">{project.description}</CardDescription>
                 </CardHeader>
                 <CardContent className="flex flex-wrap gap-2">

@@ -1,11 +1,10 @@
 "use client"
 
-import { motion } from "framer-motion"
-import { useInView } from "react-intersection-observer"
 import { Progress } from "@/components/ui/progress"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { Code, Database, Layout, Server, Settings, Terminal, } from "lucide-react"
-import {FaNode, FaReact} from "react-icons/fa"
+import { motion } from "framer-motion"
+import { Code, Layout, Settings } from "lucide-react"
+import { useInView } from "react-intersection-observer"
 
 export default function Skills() {
   const [ref, inView] = useInView({
