@@ -1,57 +1,67 @@
-"use client"
+"use client";
 
-import { motion } from "framer-motion"
-import type React from "react"
-import { useState } from "react"
-import { useInView } from "react-intersection-observer"
-// import { useToast } from "@/hooks/use-toast"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Textarea } from "@/components/ui/textarea"
-import { SOCIAL_LINKS } from "@/lib/constants"
-import { AtSign, MapPin, Phone, Send } from "lucide-react"
+import { motion } from "framer-motion";
+import  React from "react";
+import { useState } from "react";
+import { useInView } from "react-intersection-observer";
+import toast from "react-hot-toast";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { SOCIAL_LINKS } from "@/lib/constants";
+import { AtSign, MapPin, Phone, Send } from "lucide-react";
+import { SendMessage } from "@/actions/contact.action";
 
 export default function Contact() {
-  // const { toast } = useToast()
   const [ref, inView] = useInView({
     triggerOnce: false,
     threshold: 0.1,
-  })
+  });
 
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     subject: "",
     message: "",
-  })
+  });
 
-  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { name, value } = e.target
-    setFormData((prev) => ({ ...prev, [name]: value }))
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const handleResetForm = ()=>{
+    setFormData({
+      name : "",
+      email : "",
+      subject : "",
+      message : ""
+    })
   }
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
-    setIsSubmitting(true)
+  const handleSubmit = async () => {
+    setIsSubmitting(true);
+    const toastId = toast.loading("Sending....");
+    try {
+      const res = await SendMessage(formData);
 
-    // Simulate form submission
-    setTimeout(() => {
+      if (res.success) {
+        toast.success(res.message);
+        handleResetForm()
+      } else {
+        toast.error(res.message);
+      }
+    } catch (error) {
+      toast.error((error as Error).message);
+    } finally {
+      toast.dismiss(toastId);
       setIsSubmitting(false)
-      setFormData({
-        name: "",
-        email: "",
-        subject: "",
-        message: "",
-      })
-
-      // toast({
-      //   title: "Message sent!",
-      //   description: "Thank you for your message. I'll get back to you soon.",
-      // })
-    }, 1500)
-  }
+    }
+  };
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -61,15 +71,18 @@ export default function Contact() {
         staggerChildren: 0.2,
       },
     },
-  }
+  };
 
   const itemVariants = {
     hidden: { opacity: 0, y: 20 },
     visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
-  }
+  };
 
   return (
-    <section id="contact" className="section-padding bg-gradient-to-b from-gray-900 to-gray-950">
+    <section
+      id="contact"
+      className="section-padding bg-gradient-to-b from-gray-900 to-gray-950"
+    >
       <div className="container mx-auto">
         <div className="text-center mb-16">
           <motion.h2
@@ -82,7 +95,9 @@ export default function Contact() {
           </motion.h2>
           <motion.div
             initial={{ opacity: 0, scale: 0 }}
-            animate={inView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0 }}
+            animate={
+              inView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0 }
+            }
             transition={{ duration: 0.6 }}
             className="w-20 h-1 bg-purple-600 mx-auto"
           ></motion.div>
@@ -92,8 +107,8 @@ export default function Contact() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="mt-4 text-gray-400 max-w-2xl mx-auto"
           >
-            Have a question or want to work together? Feel free to reach out to me using the form below or through my
-            contact information.
+            Have a question or want to work together? Feel free to reach out to
+            me using the form below or through my contact information.
           </motion.p>
         </div>
 
@@ -128,7 +143,10 @@ export default function Contact() {
                   </div>
                   <div>
                     <h4 className="text-lg font-medium mb-1">Phone</h4>
-                    <a href={`tel:${SOCIAL_LINKS.phone}`}className="text-gray-400 hover:text-purple-400 transition-colors">
+                    <a
+                      href={`tel:${SOCIAL_LINKS.phone}`}
+                      className="text-gray-400 hover:text-purple-400 transition-colors"
+                    >
                       {SOCIAL_LINKS.phone}
                     </a>
                   </div>
@@ -139,7 +157,9 @@ export default function Contact() {
                   </div>
                   <div>
                     <h4 className="text-lg font-medium mb-1">Location</h4>
-                    <p className="text-gray-400">Coochbehar, West Bengal, India</p>
+                    <p className="text-gray-400">
+                      Coochbehar, West Bengal, India
+                    </p>
                   </div>
                 </div>
               </div>
@@ -147,12 +167,18 @@ export default function Contact() {
           </motion.div>
 
           <motion.div variants={itemVariants} className="flex-1">
-            <form onSubmit={handleSubmit} className="bg-gray-900/50 border border-gray-800 rounded-lg px-4 sm:px-6 md:px-8 py-8 ">
+            <form
+              action={handleSubmit}
+              className="bg-gray-900/50 border border-gray-800 rounded-lg px-4 sm:px-6 md:px-8 py-8 "
+            >
               <h3 className="text-2xl font-bold mb-6">Send Message</h3>
               <div className="space-y-6">
                 <div className="grid md:grid-cols-2 gap-4">
                   <div>
-                    <label htmlFor="name" className="block text-sm font-medium mb-2">
+                    <label
+                      htmlFor="name"
+                      className="block text-sm font-medium mb-2"
+                    >
                       Name
                     </label>
                     <Input
@@ -167,7 +193,10 @@ export default function Contact() {
                     />
                   </div>
                   <div>
-                    <label htmlFor="email" className="block text-sm font-medium mb-2">
+                    <label
+                      htmlFor="email"
+                      className="block text-sm font-medium mb-2"
+                    >
                       Email
                     </label>
                     <Input
@@ -183,7 +212,10 @@ export default function Contact() {
                   </div>
                 </div>
                 <div>
-                  <label htmlFor="subject" className="block text-sm font-medium mb-2">
+                  <label
+                    htmlFor="subject"
+                    className="block text-sm font-medium mb-2"
+                  >
                     Subject
                   </label>
                   <Input
@@ -198,7 +230,10 @@ export default function Contact() {
                   />
                 </div>
                 <div>
-                  <label htmlFor="message" className="block text-sm font-medium mb-2">
+                  <label
+                    htmlFor="message"
+                    className="block text-sm font-medium mb-2"
+                  >
                     Message
                   </label>
                   <Textarea
@@ -215,7 +250,7 @@ export default function Contact() {
                 <Button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full bg-purple-600 hover:bg-purple-700 text-white"
+                  className="w-full bg-purple-600 hover:bg-purple-700 text-white cursor-pointer"
                 >
                   {isSubmitting ? (
                     "Sending..."
@@ -231,5 +266,5 @@ export default function Contact() {
         </motion.div>
       </div>
     </section>
-  )
+  );
 }
