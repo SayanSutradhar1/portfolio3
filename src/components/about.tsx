@@ -99,7 +99,7 @@ export default function About() {
             </div>
 
             <Button className="bg-purple-600 hover:bg-purple-700 text-white" asChild>
-              <Link href="/resume.pdf" download>
+              <Link href="https://drive.google.com/file/d/1fPf8JNe4o1MywOO_cwwkHoCrq_-mm8ut/view?usp=sharing" download target="_blank">
                 <Download className="mr-2 h-4 w-4" /> Download Resume
               </Link>
             </Button>

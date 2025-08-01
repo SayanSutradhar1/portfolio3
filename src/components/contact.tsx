@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import  React from "react";
+import React from "react";
 import { useState } from "react";
 import { useInView } from "react-intersection-observer";
 import toast from "react-hot-toast";
@@ -34,14 +34,14 @@ export default function Contact() {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleResetForm = ()=>{
+  const handleResetForm = () => {
     setFormData({
-      name : "",
-      email : "",
-      subject : "",
-      message : ""
-    })
-  }
+      name: "",
+      email: "",
+      subject: "",
+      message: "",
+    });
+  };
 
   const handleSubmit = async () => {
     setIsSubmitting(true);
@@ -51,7 +51,7 @@ export default function Contact() {
 
       if (res.success) {
         toast.success(res.message);
-        handleResetForm()
+        handleResetForm();
       } else {
         toast.error(res.message);
       }
@@ -59,7 +59,7 @@ export default function Contact() {
       toast.error((error as Error).message);
     } finally {
       toast.dismiss(toastId);
-      setIsSubmitting(false)
+      setIsSubmitting(false);
     }
   };
 
@@ -168,7 +168,10 @@ export default function Contact() {
 
           <motion.div variants={itemVariants} className="flex-1">
             <form
-              action={handleSubmit}
+              onSubmit={(e) => {
+                e.preventDefault();
+                handleSubmit();
+              }}
               className="bg-gray-900/50 border border-gray-800 rounded-lg px-4 sm:px-6 md:px-8 py-8 "
             >
               <h3 className="text-2xl font-bold mb-6">Send Message</h3>

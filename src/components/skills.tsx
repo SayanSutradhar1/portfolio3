@@ -1,16 +1,16 @@
-"use client"
+"use client";
 
-import { Progress } from "@/components/ui/progress"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { motion } from "framer-motion"
-import { Code, Layout, Settings } from "lucide-react"
-import { useInView } from "react-intersection-observer"
+import { Progress } from "@/components/ui/progress";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { motion } from "framer-motion";
+import { Code, Layout, Settings } from "lucide-react";
+import { useInView } from "react-intersection-observer";
 
 export default function Skills() {
   const [ref, inView] = useInView({
     triggerOnce: false,
     threshold: 0.1,
-  })
+  });
 
   const skillCategories = [
     {
@@ -23,8 +23,9 @@ export default function Skills() {
         { name: "Node.js", level: 85 },
         { name: "Express", level: 80 },
         { name: "MongoDB", level: 85 },
-        { name: "Rest Api", level: 80},
-        { name: "Tailwind CSS", level: 90 }
+        { name: "Rest Api", level: 80 },
+        { name: "Tailwind CSS", level: 90 },
+        { name: "WebSocket", level: 60 },
       ],
     },
     {
@@ -35,6 +36,8 @@ export default function Skills() {
         { name: "Git", level: 90 },
         { name: "Postman", level: 85 },
         { name: "Figma", level: 65 },
+        { name: "Docker", level: 60 },
+        { name: "AWS", level: 60 },
       ],
     },
     {
@@ -46,10 +49,10 @@ export default function Skills() {
         { name: "TypeScript", level: 85 },
         { name: "Python", level: 40 },
         { name: "Java", level: 70 },
-        { name: "C", level: 60 }
+        { name: "C", level: 60 },
       ],
     },
-  ]
+  ];
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -59,15 +62,18 @@ export default function Skills() {
         staggerChildren: 0.1,
       },
     },
-  }
+  };
 
   const itemVariants = {
     hidden: { opacity: 0, y: 20 },
     visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
-  }
+  };
 
   return (
-    <section id="skills" className="section-padding bg-gradient-to-b from-gray-950 to-gray-900">
+    <section
+      id="skills"
+      className="section-padding bg-gradient-to-b from-gray-950 to-gray-900"
+    >
       <div className="container mx-auto">
         <div className="text-center mb-16">
           <motion.h2
@@ -80,7 +86,9 @@ export default function Skills() {
           </motion.h2>
           <motion.div
             initial={{ opacity: 0, scale: 0 }}
-            animate={inView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0 }}
+            animate={
+              inView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0 }
+            }
             transition={{ duration: 0.6 }}
             className="w-20 h-1 bg-purple-600 mx-auto"
           ></motion.div>
@@ -108,12 +116,25 @@ export default function Skills() {
             </TabsList>
             {skillCategories.map((category) => (
               <TabsContent key={category.id} value={category.id}>
-                <motion.div variants={containerVariants} initial="hidden" animate="visible" className="space-y-6">
+                <motion.div
+                  variants={containerVariants}
+                  initial="hidden"
+                  animate="visible"
+                  className="space-y-6"
+                >
                   {category.skills.map((skill, index) => (
-                    <motion.div key={index} variants={itemVariants} className="space-y-2">
+                    <motion.div
+                      key={index}
+                      variants={itemVariants}
+                      className="space-y-2"
+                    >
                       <div className="flex justify-between">
-                        <span className="text-sm font-medium">{skill.name}</span>
-                        <span className="text-sm text-gray-400">{skill.level}%</span>
+                        <span className="text-sm font-medium">
+                          {skill.name}
+                        </span>
+                        <span className="text-sm text-gray-400">
+                          {skill.level}%
+                        </span>
                       </div>
                       <Progress
                         value={skill.level}
@@ -128,5 +149,5 @@ export default function Skills() {
         </motion.div>
       </div>
     </section>
-  )
+  );
 }
