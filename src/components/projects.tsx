@@ -12,6 +12,7 @@ import { ExternalLink, Github, Maximize2, X } from "lucide-react"
 
 import esp from "@/assets/thumbnails/esp.png"
 import ton from "@/assets/thumbnails/ton.png"
+import mtct from "@/assets/thumbnails/mtct.png"
 
 export default function Projects() {
   const [ref, inView] = useInView({
@@ -42,6 +43,15 @@ export default function Projects() {
       details:
         "A web platform for the official technical club (TECH O NICKS) of Coochbehar Government Engineering College. This application having a dynamic and stylish UI for the user, includes features like event details , RSVP etc. It has a authentication system where Students can create a id for this club",
     },
+    {
+      title : "Mat-Chat",
+      description : "Let's Connect with people in a different way which is fast and efficient and safe than other platforms. Chat with your friends and family with end to end security in real time environment",
+      image : mtct,
+      tags : ["Next js","Express js","Socket.io","Shadcn UI","MongoDB","Auth js","TypeScript"],
+      github : "https://github.com/SayanSutradhar1/Mat-Chat",
+      demo : "https://mat-chat.vercel.app",
+      details : "Let's Connect with people in a different way which is fast and efficient and safe than other platforms. Chat with your friends and family with end to end security in real time environment"
+    }
   ]
 
   const containerVariants = {
