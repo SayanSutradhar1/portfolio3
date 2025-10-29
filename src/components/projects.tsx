@@ -13,6 +13,7 @@ import { ExternalLink, Github, Maximize2, X } from "lucide-react"
 import esp from "@/assets/thumbnails/esp.png"
 import ton from "@/assets/thumbnails/ton.png"
 import mtct from "@/assets/thumbnails/mtct.png"
+import smrtnslt from "@/assets/thumbnails/app-icon.png"
 
 export default function Projects() {
   const [ref, inView] = useInView({
@@ -23,6 +24,15 @@ export default function Projects() {
   const [selectedProject, setSelectedProject] = useState<number | null>(null)
 
   const projects = [
+    {
+      title : "Smart Translator",
+      description : "An AI-powered Android App that translates text in different languages with text detection feature in real-time",
+      image : smrtnslt,
+      tags : ["React Native","Expo","FastAPI","EAS Build","Google Translate SDK"],
+      github : "https://github.com/SayanSutradhar1/Smart-AI-Translator",
+      demo : "https://expo.dev/artifacts/eas/5Ds9jKiTVyX6LmtTtAPBXT.apk",
+      details : "An AI-powered Android App that translates text in different languages with text detection feature in real-time"
+    },
     {
       title : "Mat-Chat",
       description : "Let's Connect with people in a different way which is fast and efficient and safe than other platforms. Chat with your friends and family with end to end security in real time environment",
@@ -47,8 +57,8 @@ export default function Projects() {
       description: "A web platform for the official technical club (TECH O NICKS) of Coochbehar Government Engineering College. This application having a dynamic and stylish UI for the user, includes features like event details , RSVP etc. It has a authentication system where Students can create a id for this club",
       image: ton,
       tags: ["Next js", "TypeScript", "Accertinity UI", "MongoDB"],
-      github: "https://github.com",
-      demo: "https://example.com",
+      github: "https://github.com/techonicks/techonickswebsite1.0",
+      demo: "https://techonicks.vercel.app/",
       details:
         "A web platform for the official technical club (TECH O NICKS) of Coochbehar Government Engineering College. This application having a dynamic and stylish UI for the user, includes features like event details , RSVP etc. It has a authentication system where Students can create a id for this club",
     },

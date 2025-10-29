@@ -20,10 +20,14 @@ export default function Skills() {
       skills: [
         { name: "React", level: 90 },
         { name: "Next.js", level: 85 },
+        { name: "React Native", level: 60 },
         { name: "Node.js", level: 85 },
         { name: "Express", level: 80 },
+        { name: "FastAPI", level: 50 },
+        { name: "SQL", level: 60 },
         { name: "MongoDB", level: 85 },
         { name: "Rest Api", level: 80 },
+        { name: "Prisma", level: 60 },
         { name: "Tailwind CSS", level: 90 },
         { name: "WebSocket", level: 60 },
       ],
@@ -35,7 +39,9 @@ export default function Skills() {
       skills: [
         { name: "Git", level: 90 },
         { name: "Postman", level: 85 },
+        { name: "NeonDB", level: 50 },
         { name: "Figma", level: 65 },
+        { name: "Vercel", level: 80 },
         { name: "Docker", level: 60 },
         { name: "AWS", level: 60 },
       ],
@@ -47,7 +53,7 @@ export default function Skills() {
       skills: [
         { name: "JavaScript", level: 95 },
         { name: "TypeScript", level: 85 },
-        { name: "Python", level: 40 },
+        { name: "Python", level: 50 },
         { name: "Java", level: 70 },
         { name: "C", level: 60 },
       ],
