@@ -30,6 +30,7 @@ export default function Skills() {
         { name: "Prisma", level: 60 },
         { name: "Tailwind CSS", level: 90 },
         { name: "WebSocket", level: 60 },
+        { name: "Redux", level : 75}
       ],
     },
     {

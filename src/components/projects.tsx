@@ -14,6 +14,7 @@ import esp from "@/assets/thumbnails/esp.png"
 import ton from "@/assets/thumbnails/ton.png"
 import mtct from "@/assets/thumbnails/mtct.png"
 import smrtnslt from "@/assets/thumbnails/app-icon.png"
+import blogHub from "@/assets/thumbnails/blog-hub.png"
 
 export default function Projects() {
   const [ref, inView] = useInView({
@@ -24,6 +25,15 @@ export default function Projects() {
   const [selectedProject, setSelectedProject] = useState<number | null>(null)
 
   const projects = [
+    {
+      title : "Blog Hub",
+      description : "An applicarion which allows users to read blogs from various users and having fundamental features like create, update and delete of blogs including a secure authentication",
+      image : blogHub,
+      tags : ["Next js","Express js","MongoDB","Auth js","RTK Query","Shadcn UI","TypeScript"],
+      github : "https://github.com/SayanSutradhar1/BlogHub",
+      demo : "https://blog-hub-dev.vercel.app/",
+      details : "An applicarion which allows users to read blogs from various users and having fundamental features like create, update and delete of blogs including a secure authentication"
+    },
     {
       title : "Smart Translator",
       description : "An AI-powered Android App that translates text in different languages with text detection feature in real-time",
