@@ -12,7 +12,7 @@ export default function Experience() {
 
   const experiences = [
     {
-      position: "IT Department Intern",
+      position: "Software Developer Intern",
       company: "SwaLay Digital",
       location: "Remote",
       period: "May 2025 - Present",

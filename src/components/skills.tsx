@@ -30,7 +30,7 @@ export default function Skills() {
         { name: "Prisma", level: 60 },
         { name: "Tailwind CSS", level: 90 },
         { name: "WebSocket", level: 60 },
-        { name: "Redux", level : 75}
+        { name: "Redux", level: 75 },
       ],
     },
     {
@@ -45,6 +45,7 @@ export default function Skills() {
         { name: "Vercel", level: 80 },
         { name: "Docker", level: 60 },
         { name: "AWS", level: 60 },
+        { name: "Github Actions", level: 50 },
       ],
     },
     {
